@@ -1,0 +1,60 @@
+<html>
+<head>
+
+
+<!-- jsCalendar v1.4.3 Javascript and CSS from unpkg cdn -->
+<script src="https://unpkg.com/simple-jscalendar@1.4.3/source/jsCalendar.min.js" integrity="sha384-JqNLUzAxpw7zEu6rKS/TNPZ5ayCWPUY601zaig7cUEVfL+pBoLcDiIEkWHjl07Ot" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/simple-jscalendar@1.4.3/source/jsCalendar.min.css" integrity="sha384-+OB2CadpqXIt7AheMhNaVI99xKH8j8b+bHC8P5m2tkpFopGBklD3IRvYjPekeWIJ" crossorigin="anonymous">
+<script>
+Date.prototype.addDays = function(days) {
+    this.setDate(this.getDate() + parseInt(days));
+    return this;
+};
+</script>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td>
+<!-- My calendar element -->
+<div id="my-calendar"></div>
+</td>
+<td>
+<!-- Outputs -->
+Date : <h2 id="pickedDate"></h2>
+20 Days Out : <br>
+<h1 id="my-input-a"></h1><br>
+25 Days Out : <br>
+<h1 id="my-input-b"></h1><br>
+
+<!-- Create the calendar -->
+<script type="text/javascript">
+    // Get the element
+    var element = document.getElementById("my-calendar");
+    // Create the calendar
+    var myCalendar = jsCalendar.new(element, "now", {
+		"monthFormat": "month YYYY"
+	});
+    // Get the inputs
+    var inputA = document.getElementById("my-input-a");
+    var inputB = document.getElementById("my-input-b");
+    var picked = document.getElementById("pickedDate");
+    // Add events
+    myCalendar.onDateClick(function(event, date){
+        picked.innerHTML = date.toString().substr(0,15);
+        inputA.innerHTML = date.addDays(20).toString().substr(0,15);
+		inputB.innerHTML = date.addDays(5).toString().substr(0,15);
+		});
+//	myCalendar.onDateClick(function(event, date){
+	//	workingDate = date;
+      //  inputB.value = workingDate.addDays(25).toString().substr(0,15);
+  //  });
+</script>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+
+</html>
