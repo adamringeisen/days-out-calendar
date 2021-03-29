@@ -1,3 +1,4 @@
+
 <html>
 <head>
 
@@ -22,11 +23,15 @@ Date.prototype.addDays = function(days) {
 </td>
 <td>
 <!-- Outputs -->
-Date : <h2 id="pickedDate"></h2>
-20 Days Out : <br>
-<h1 id="my-input-a"></h1><br>
-25 Days Out : <br>
-<h1 id="my-input-b"></h1><br>
+<h2>Date Picked: <span id="picked"></span></h2>
+<ul>
+    <li>10 Days out: <span id="days10"></span></li>
+    <li>15 Days out:  <span id="days15"></span></li>
+    <li>20 Days out:  <span id="days20"></span></li>
+    <li>25 Days out:  <span id="days25"></span></li>
+    <li>30 Days out:  <span id="days30"></span></li>
+    <li>35 Days out:  <span id="days35"></span></li>
+</ul>
 
 <!-- Create the calendar -->
 <script type="text/javascript">
@@ -37,14 +42,24 @@ Date : <h2 id="pickedDate"></h2>
 		"monthFormat": "month YYYY"
 	});
     // Get the inputs
-    var inputA = document.getElementById("my-input-a");
-    var inputB = document.getElementById("my-input-b");
-    var picked = document.getElementById("pickedDate");
+    var picked = document.getElementById("picked");
+    var days10 = document.getElementById("days10");
+    var days15 = document.getElementById("days15");
+    var days20 = document.getElementById("days20");
+    var days25 = document.getElementById("days25");
+    var days30 = document.getElementById("days30");
+    var days35 = document.getElementById("days35");
     // Add events
     myCalendar.onDateClick(function(event, date){
         picked.innerHTML = date.toString().substr(0,15);
-        inputA.innerHTML = date.addDays(20).toString().substr(0,15);
-		inputB.innerHTML = date.addDays(5).toString().substr(0,15);
+        //inputA.innerHTML = date.addDays(20).toString().substr(0,15);
+        days10.innerHTML = date.addDays(10).toString().substr(0,15);
+        days15.innerHTML = date.addDays(5).toString().substr(0,15);
+        days20.innerHTML = date.addDays(5).toString().substr(0,15);
+        days25.innerHTML = date.addDays(5).toString().substr(0,15);
+        days30.innerHTML = date.addDays(5).toString().substr(0,15);
+        days35.innerHTML = date.addDays(5).toString().substr(0,15);
+		//inputB.innerHTML = date.addDays(5).toString().substr(0,15);
 		});
 //	myCalendar.onDateClick(function(event, date){
 	//	workingDate = date;
@@ -58,3 +73,4 @@ Date : <h2 id="pickedDate"></h2>
 </body>
 
 </html>
+
